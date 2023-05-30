@@ -17,26 +17,33 @@ class SaleScreen extends StatefulWidget {
 class _SaleScreenState extends State<SaleScreen> {
 
   List<ServiceModel> serviceModels = [
-    ServiceModel(serviceName: 'Charges', description: 'eg Traffic fines,bail, police charges', fees: [{
-      'Fines': 1000,
-      'Bail': 500,
-      'Police Charges': 1500,
-      'Traffic Fines': 2000,
+    ServiceModel(serviceName: 'Charges',
+      description: 'eg Traffic fines,bail, police charges',
+      fees: [{
+      'Fines': 1000},
+        {'Bail': 500},
+        {'Police Charges': 1500},
+        {'Traffic Fines': 2000
     }]
     , durationDue: {
       'Duration': 30,
         },),
-    ServiceModel(serviceName: 'Fees', description: 'eg Levies, rates, proceeds, fire arm license', fees: [{
-      'Levy': 1000,
-      'Firearm License': 500,
-      'Total': 1500}]
+    ServiceModel(serviceName: 'Fees',
+      description: 'eg Levies, rates, proceeds,fire arm license',
+      fees: [
+        {'Levy': 1000, 'Total': 1500},
+      {'Firearm License': 500,},
+      {'Proceeds': 1500, 'Total': 1500},
+      {'Rates': 2000, 'Total': 1500},
+    ]
       , durationDue: {
       'Duration': 30,
     },),
-    ServiceModel(serviceName: 'Garnishee Order', description: 'eg Alimony, Child maintenance', fees: [{
-      'Child Maintenance': 1000,
-      'Alimony': 500,
-      'Total': 1500}]
+    ServiceModel(serviceName: 'Garnishee Order',
+      description: 'eg Alimony, Child maintenance', fees: [
+        {'Child Maintenance': 1000},
+      {'Alimony': 500},
+      {'Total': 1500}]
       , durationDue: {
       'Duration': 30,
     },),

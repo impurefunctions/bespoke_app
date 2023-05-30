@@ -44,7 +44,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
         ),
       ),
       body: StreamBuilder<List<TransactionModel>>(
-          stream: getAllTransactionsOffline().asStream(),
+          stream: getAllTransactions().asStream(),
           builder: (context, transactions) {
             if (transactions.connectionState == ConnectionState.done) {
               if (transactions.hasData) {
@@ -118,7 +118,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                               showCheckboxColumn: false,
                               header: const Text('Recent Transactions'),
                               columns: const [
-                                DataColumn(label: Text('Type')),
+                                DataColumn(label: Text("ID")),
                                 DataColumn(label: Text('Paid')),
                                 DataColumn(label: Text('Amount')),
                                 DataColumn(label: Text('Date')),
@@ -143,11 +143,113 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
 
 
   Future<List<TransactionModel>> getAllTransactions() async {
-    final ApiBaseHelper helper = ApiBaseHelper();
+
     final String token = widget.token;
     try {
-      final transactionsList =
-      await helper.get(allTransactionsAPI, token);
+      final transactionsList  =[
+        {
+          "paymentsMade": [],
+          "isPaid": false,
+          "_id": "647351440437eee9476ea92b",
+          "userId": "1234567",
+          "amount": 100,
+          "paymentDate": "2023-05-28T13:04:04.984Z",
+          "createdAt": "2023-05-28T13:04:04.986Z",
+          "updatedAt": "2023-05-28T13:04:04.986Z",
+          "__v": 0
+        },
+        {
+          "paymentsMade": [],
+          "_id": "64736bbf51f7efb7a4d1e253",
+          "serviceId": "64735c5b7f80e6b6539606f7",
+          "feeType": "Standard",
+          "userId": "1234567",
+          "amount": 200,
+          "isPaid": false,
+          "paymentDate": "2023-05-28T14:57:03.350Z",
+          "createdAt": "2023-05-28T14:57:03.353Z",
+          "updatedAt": "2023-05-28T14:57:03.353Z",
+          "__v": 0
+        },
+        {
+          "_id": "647379e70eb494912aa2bcdc",
+          "serviceId": "64735c5b7f80e6b6539606f7",
+          "feeType": "Standard",
+          "userId": "1234567",
+          "paymentsMade": [],
+          "amount": 200,
+          "isPaid": false,
+          "paymentDate": "2023-05-28T15:57:27.013Z",
+          "createdAt": "2023-05-28T15:57:27.016Z",
+          "updatedAt": "2023-05-28T15:57:27.016Z",
+          "__v": 0
+        },
+        {
+          "_id": "64737add3c8f426f279006ed",
+          "serviceId": "64735c5b7f80e6b6539606f7",
+          "feeType": "Standard",
+          "userId": "1234567",
+          "paymentsMade": [],
+          "amount": 200,
+          "isPaid": false,
+          "paymentDate": "2023-05-28T16:01:33.121Z",
+          "createdAt": "2023-05-28T16:01:33.123Z",
+          "updatedAt": "2023-05-28T16:01:33.123Z",
+          "__v": 0
+        },
+        {
+          "_id": "64737afa942a9060e8ab82eb",
+          "serviceId": "64735c5b7f80e6b6539606f7",
+          "feeType": "Standard",
+          "userId": "1234567",
+          "paymentsMade": [],
+          "amount": 200,
+          "isPaid": false,
+          "paymentDate": "2023-05-28T16:02:02.863Z",
+          "createdAt": "2023-05-28T16:02:02.865Z",
+          "updatedAt": "2023-05-28T16:02:02.865Z",
+          "__v": 0
+        },
+        {
+          "_id": "64737b2d72dbaaa07653e1d2",
+          "serviceId": "64735c5b7f80e6b6539606f7",
+          "feeType": "Standard",
+          "userId": "1234567",
+          "paymentsMade": [],
+          "amount": 200,
+          "isPaid": false,
+          "paymentDate": "2023-05-28T16:02:53.218Z",
+          "createdAt": "2023-05-28T16:02:53.220Z",
+          "updatedAt": "2023-05-28T16:02:53.220Z",
+          "__v": 0
+        },
+        {
+          "_id": "64737bb588e50c44c951cbcd",
+          "serviceId": "64735c5b7f80e6b6539606f7",
+          "feeType": "Standard",
+          "userId": "1234567",
+          "paymentsMade": [],
+          "amount": 200,
+          "isPaid": false,
+          "paymentDate": "2023-05-28T16:05:09.610Z",
+          "createdAt": "2023-05-28T16:05:09.614Z",
+          "updatedAt": "2023-05-28T16:05:09.614Z",
+          "__v": 0
+        },
+        {
+          "_id": "647396fa8c2704664bb9fc81",
+          "serviceId": "64735c5b7f80e6b6539606f7",
+          "feeType": "Standard",
+          "userId": "1234567",
+          "paymentsMade": [],
+          "amount": 200,
+          "isPaid": false,
+          "paymentDate": "2023-05-28T18:01:30.289Z",
+          "createdAt": "2023-05-28T18:01:30.292Z",
+          "updatedAt": "2023-05-28T18:01:30.292Z",
+          "__v": 0
+        }
+      ];
       final transactions = transactionsList.map((e) {
         return TransactionModel.fromJson(e);
       }).toList();
@@ -161,21 +263,6 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
 
   Future<List<TransactionModel>> getAllTransactionsOffline() async {
     return [
-      TransactionModel(
-          serviceId: '1',
-          feeType: "Charge",
-          userId: '1',
-          paymentDate: DateTime.now().subtract(Duration(days: 2)),
-
-          isPaid: true,
-          amount: 1000, paymentsMade: []),
-TransactionModel(
-          serviceId: '1',
-          feeType: "Fine",
-          userId: '1',
-          paymentDate: DateTime.now().subtract(Duration(days: 1)),
-          isPaid: false,
-          amount: 1000, paymentsMade: []),
 
     ];
   }
@@ -227,7 +314,7 @@ class _DataSource extends DataTableSource {
         }*/
       },
       cells: [
-        DataCell(Text(row.feeType)),
+        DataCell(Text(row.sId!)),
         DataCell(CircleAvatar(
           backgroundColor: row.isPaid == true
               ? Colors.greenAccent

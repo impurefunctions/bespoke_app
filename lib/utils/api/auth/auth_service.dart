@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:intl/intl.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../auth/index.dart';
@@ -57,7 +54,7 @@ class Auth implements BaseAuth {
   @override
   Future<Map<String, dynamic>> sendOTP(Map<String, dynamic> body) async {
     Map<String, dynamic>? response;
-    await _helper.post(sendOTPAPI, body, null).then((value) {
+    await _helper.post("sendOTPAPI", body, null).then((value) {
       response = value as Map<String, dynamic>;
     }).onError((error, stackTrace) {
       return response = null;
@@ -70,7 +67,7 @@ class Auth implements BaseAuth {
   Future<Map<String, dynamic>> verifyOTP(Map<String, dynamic> body) async{
 
     Map<String, dynamic>? response;
-    await _helper.post(verifyOTPAPI, body, null).then((value) {
+    await _helper.post("verifyOTPAPI", body, null).then((value) {
       response = value as Map<String, dynamic>;
     })
     .onError((error, stackTrace) {

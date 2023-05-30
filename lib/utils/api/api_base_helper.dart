@@ -51,7 +51,7 @@ class ApiBaseHelper {
   Future<dynamic> delete(String url) async {
     var apiResponse;
     try {
-      final response = await client.delete(Uri.parse(baseURLAuth + url));
+      final response = await client.delete(Uri.parse(url));
       apiResponse = _returnResponse(response);
     } on SocketException {
       //print('No net');

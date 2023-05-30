@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -49,6 +50,7 @@ class _PayFineScreenState extends State<PayFineScreen> {
                 onPressed: () {
                   showDialog(context: context, builder: (context) => Dialog(
                     child: Container(
+                      color: Colors.lightBlueAccent[100],
                       height: 200,
                       child: Column(
                         children: [
@@ -95,6 +97,10 @@ class _PayFineScreenState extends State<PayFineScreen> {
                                     context: context,
                                     builder: (context) {
                                       return Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.lightBlueAccent[100],
+                                          borderRadius: BorderRadius.circular(10.w),
+                                        ),
                                           padding: EdgeInsets.all(10.w),
                                           height: 400.h,
                                           child: Column(
@@ -117,7 +123,19 @@ class _PayFineScreenState extends State<PayFineScreen> {
                                                 ),
                                               ),
                                               Expanded(
-                                                child: QrImage(
+                                                child: MobileScanner(
+                                                    allowDuplicates: false,
+                                                    controller: MobileScannerController(
+                                                        facing: CameraFacing.back, torchEnabled: false),
+                                                    onDetect: (barcode, args) {
+                                                      if (barcode.rawValue == null) {
+                                                        debugPrint('Failed to scan Barcode');
+                                                      } else {
+                                                        final String code = barcode.rawValue!;
+                                                        debugPrint('Barcode found! $code');
+                                                      }
+                                                    }),
+                                                /*child: QrImage(
                                                   foregroundColor: context.isDarkMode
                                                       ? Colors.white
                                                       : Colors.black,
@@ -130,7 +148,7 @@ class _PayFineScreenState extends State<PayFineScreen> {
                                                   embeddedImageStyle: QrEmbeddedImageStyle(
                                                     size: Size(80.h, 80.w),
                                                   ),
-                                                ),
+                                                ),*/
                                               ),
                                             ],
                                           )
@@ -163,13 +181,12 @@ class _PayFineScreenState extends State<PayFineScreen> {
                             leading: Container(
                                 padding: EdgeInsets.all(10.w),
                                 decoration: BoxDecoration(
+
                                   border: Border.all(
                                     color: context.isDarkMode ? Colors.white : Colors.black,
                                   ),
                                   borderRadius: BorderRadius.circular(5.h),
-                                  color: context.isDarkMode
-                                      ? Colors.transparent
-                                      : const Color(0xffE4E9EC),
+                                  color: Colors.lightBlueAccent[100],
                                 ),
                                 // color: Color(0xffD1E9FF),
                                 child: Icon(

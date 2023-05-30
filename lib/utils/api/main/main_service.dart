@@ -22,7 +22,7 @@ class MainApiService implements BaseAPIService {
     }
 
     try {
-      Map<String, dynamic> response = await _helper.post(createTransactionAPI, body, token) as Map<String, dynamic>;
+      Map<String, dynamic> response = await _helper.post("createTransactionAPI", body, token) as Map<String, dynamic>;
       return response;
     } catch (error) {
       print('Error creating transaction: $error');
@@ -30,24 +30,7 @@ class MainApiService implements BaseAPIService {
     }
   }
 
-  @override
-  Future<Map<String, dynamic>> getAllReversedTransactions() async{
-    Map<String, dynamic>? response;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _tokenString = prefs.get('token').toString();
 
-    if (_tokenString.isNotEmpty) {
-      await _helper.get(allReversedTransactionsAPI, _tokenString).then((value) {
-        response = value as Map<String, dynamic>;
-      }).onError((error, stackTrace) {
-        return response = null;
-      });
-
-    }
-
-
-    return response!;
-  }
 
   @override
   Future<Map<String, dynamic>> getAllTransactions() async{
@@ -56,7 +39,7 @@ class MainApiService implements BaseAPIService {
     _tokenString = prefs.get('token').toString();
 
     if (_tokenString.isNotEmpty) {
-      await _helper.get(allTransactionsAPI, _tokenString).then((value) {
+      await _helper.get(getTransactionsAPI, _tokenString).then((value) {
         return response = value as Map<String, dynamic>;
       }).onError((error, stackTrace) {
         return response = { 'error': error.toString() };
@@ -66,138 +49,4 @@ class MainApiService implements BaseAPIService {
 
     return response!;
   }
-
-  @override
-  Future<Map<String, dynamic>> getFailedReversedTransactions() async{
-    Map<String, dynamic>? response;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _tokenString = prefs.get('token').toString();
-
-    if (_tokenString.isNotEmpty) {
-      await _helper.get(failedReversedTransactionsAPI, _tokenString).then((value) {
-        response = value as Map<String, dynamic>;
-      }).onError((error, stackTrace) {
-        return response = null;
-      });
-
-    }
-
-
-    return response!;
-  }
-
-  @override
-  Future<Map<String, dynamic>> getFailedTransactions() async{
-    Map<String, dynamic>? response;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _tokenString = prefs.get('token').toString();
-
-    if (_tokenString.isNotEmpty) {
-      await _helper.get(failedTransactionsAPI, _tokenString).then((value) {
-        response = value as Map<String, dynamic>;
-      }).onError((error, stackTrace) {
-        return response = null;
-      });
-
-    }
-
-
-    return response!;
-  }
-
-  @override
-  Future<Map<String, dynamic>> getPendingReversedTransactions()  async{
-    Map<String, dynamic>? response;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _tokenString = prefs.get('token').toString();
-
-    if (_tokenString.isNotEmpty) {
-      await _helper.get(pendingReversedTransactionsAPI, _tokenString).then((value) {
-        response = value as Map<String, dynamic>;
-      }).onError((error, stackTrace) {
-        return response = null;
-      });
-
-    }
-
-
-    return response!;
-  }
-
-  @override
-  Future<Map<String, dynamic>> getPendingTransactions() async{
-    Map<String, dynamic>? response;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _tokenString = prefs.get('token').toString();
-
-    if (_tokenString.isNotEmpty) {
-      await _helper.get(pendingTransactionsAPI, _tokenString).then((value) {
-        response = value as Map<String, dynamic>;
-      }).onError((error, stackTrace) {
-        return response = null;
-      });
-
-    }
-
-
-    return response!;
-  }
-
-  @override
-  Future<Map<String, dynamic>> getSuccessfulReversedTransactions()  async{
-    Map<String, dynamic>? response;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _tokenString = prefs.get('token').toString();
-
-    if (_tokenString.isNotEmpty) {
-      await _helper.get(successfulReversedTransactionsAPI, _tokenString).then((value) {
-        response = value as Map<String, dynamic>;
-      }).onError((error, stackTrace) {
-        return response = null;
-      });
-
-    }
-
-
-    return response!;
-  }
-
-  @override
-  Future<Map<String, dynamic>> getSuccessfulTransactions() async{
-    Map<String, dynamic>? response;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _tokenString = prefs.get('token').toString();
-
-    if (_tokenString.isNotEmpty) {
-      await _helper.get(successfulTransactionsAPI, _tokenString).then((value) {
-        response = value as Map<String, dynamic>;
-      }).onError((error, stackTrace) {
-        return response = null;
-      });
-
-    }
-
-
-    return response!;
-  }
-
-  @override
-  Future<Map<String, dynamic>> reverseTransaction(Map<String, dynamic> body) async {
-    Map<String, dynamic>? response;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _tokenString = prefs.get('token').toString();
-
-    if (_tokenString.isNotEmpty) {
-      await _helper.post(reverseTransactionAPI, body, _tokenString).then((value) {
-        response = value as Map<String, dynamic>;
-      }).onError((error, stackTrace) {
-        return response = null;
-      });
-
-    }
-
-
-    return response!;
-  }
- 
 }
