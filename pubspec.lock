@@ -37,10 +37,10 @@ packages:
     dependency: transitive
     description:
       name: args
-      sha256: "4cab82a83ffef80b262ddedf47a0a8e56ee6fbf7fe21e6e768b02792034dd440"
+      sha256: c372bb384f273f0c2a8aaaa226dad84dc27c8519a691b888725dec59518ad53a
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   async:
     dependency: transitive
     description:
@@ -301,10 +301,10 @@ packages:
     dependency: "direct main"
     description:
       name: feature_folder_cli
-      sha256: c2dd4b197366e609d68196de5b49a417fccdebd446f93d489592a0a31e548b79
+      sha256: c674ff6d5ebd34a9906174b101c3e6ca1efbc1c6972d8e353f6068e255d1fb3e
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.1"
+    version: "0.3.0"
   ffi:
     dependency: transitive
     description:
@@ -497,18 +497,18 @@ packages:
     dependency: transitive
     description:
       name: mason
-      sha256: "91bfe7f57cf148af55f1967e5f01fab75c5556ca1acdec4a979413bbe8807376"
+      sha256: c6c25b83c61c628fc9946be39f01291808342d8e8df75c61fc7b6a671bd0a8f8
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0-dev.26"
+    version: "0.1.0-dev.49"
   mason_logger:
     dependency: transitive
     description:
       name: mason_logger
-      sha256: f307bade8d2557a11e4e3d6a218093454038d877e5f72a60482c9bb5fe7a9bac
+      sha256: "389dda35ee44c8664490749b204de1ee2dd91fbe9a725c2798f3232010dc53de"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.4"
+    version: "0.2.6"
   matcher:
     dependency: transitive
     description:
@@ -749,14 +749,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
-  recase:
-    dependency: transitive
-    description:
-      name: recase
-      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.1.0"
   rxdart:
     dependency: "direct main"
     description:
@@ -978,14 +970,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
-  universal_io:
-    dependency: transitive
-    description:
-      name: universal_io
-      sha256: "06866290206d196064fd61df4c7aea1ffe9a4e7c4ccaa8fcded42dd41948005d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.0"
   vector_graphics:
     dependency: transitive
     description:
