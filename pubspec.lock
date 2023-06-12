@@ -269,10 +269,10 @@ packages:
     dependency: "direct main"
     description:
       name: dotted_line
-      sha256: "453e6d0ec4fe923ae00469dbc2973b9e9b11ef1c71abcded003d05af0a219d23"
+      sha256: "5c3b47a6a31e19ea52f7b53522f969542b0f35ff3b304082363700e6b1d80610"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "3.2.0"
   email_validator:
     dependency: "direct main"
     description:
