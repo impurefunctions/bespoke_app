@@ -14,7 +14,7 @@ dependencies:
   feature_folder_cli: ^0.1.1
   json_serializable: ^6.6.1
   build_runner: ^2.3.3
-  shared_preferences: ^2.0.18
+  shared_preferences: ^2.2.0
   rxdart: ^0.27.7
   jwt_decoder: ^2.0.1
   http: ^0.13.5
